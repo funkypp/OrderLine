@@ -32,15 +32,6 @@ public class Order {
         return deliveryAddress;
     }
 
-    public OrderLine getOrderLineByArticleID(int articleID) {
-        for (OrderLine orderLine : orderList) {
-            if (orderLine.getArticleID() == articleID) {
-                return orderLine;
-            }
-        }
-        return articleID;
-    }
-
     public String toString() {
 
         String result = orderID + ", " + orderDate + ", " + customerID + "," + deliveryAddress;
