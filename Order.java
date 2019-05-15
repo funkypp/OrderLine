@@ -8,7 +8,6 @@ public class Order {
     private String deliveryAddress;
     private ArrayList<OrderLine> orderList = new ArrayList<OrderLine>();
 
-
     public Order(int orderID, String orderDate, String customerID, String deliveryAddress) {
         this.orderID = orderID;
         this.orderDate = orderDate;
@@ -32,43 +31,57 @@ public class Order {
     public String getdeliveryAddress() {
         return deliveryAddress;
     }
-   
 
-    public OrderLine getOrderLineByArticleID (int articleID){
-        for (OrderLine orderLine : orderList){
+    public OrderLine getOrderLineByArticleID(int articleID) {
+        for (OrderLine orderLine : orderList) {
             if (orderLine.getArticleID() == articleID) {
                 return orderLine;
             }
         }
-      return orderLine; 
+        return articleID;
     }
 
     public String toString() {
 
         String result = orderID + ", " + orderDate + ", " + customerID + "," + deliveryAddress;
-        
-        for (OrderLine orderLine : orderList){
+
+        for (OrderLine orderLine : orderList) {
             result += "\n" + orderLine.toString();
         }
         return result;
     }
- 
+
     public double getTotalPrice() {
         double totalcost = 0;
         for (OrderLine line : orderList) {
-           totalcost += line.getPrice (); 
-            }
-            return totalcost;
+            totalcost += line.getPrice();
+        }
+        return totalcost;
     }
 
     public void addOrderLine(int articleID, int quantity, double pricePerPiece, double taxRate) {
         OrderLine orderLine = new OrderLine(articleID, quantity, pricePerPiece, taxRate);
-        orderList.add(orderLine);
+        orderList.add (orderLine);
         totalPrice += orderLine.getPrice();
     }
-    public void toPrint(){
-        for (OrderLine a : orderList){
+
+    public void toPrint() {
+        for (OrderLine a : orderList) {
             System.out.println(a);
         }
     }
+    public int getArticleIDD() {
+        int Aid = 0;
+        for (OrderLine line : orderList) {
+            Aid = line.getArticleID();
+        }
+        return Aid;
+    }
+    public void getarticleIDZ() {
+        for (OrderLine line: orderList){
+            System.out.println(line.getArticleID());
+        }
+    }
+
+    
 }
